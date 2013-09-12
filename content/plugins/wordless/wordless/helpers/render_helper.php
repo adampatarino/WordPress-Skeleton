@@ -1,38 +1,19 @@
 <?php
 
-  /**
-  * Handles rendering of views, templates, partials
-  *
-  * @ingroup helperclass
-  */
 class RenderHelper {
-
-  /**
-  * This is awaiting for documentation
-  *
-  * @todo
-  *   Loss of doc
-  */  
   function render_error($title, $description) {
     ob_end_clean();
     require "templates/error_template.php";
     die();
   }
 
-  /**
-  * This is awaiting for documentation
-  *
-  * @todo
-  *   Loss of doc
-  */
   function render_template($name, $locals = array()) {
     $valid_filenames = array("$name.html.haml", "$name.haml", "$name.html.php", "$name.php");
     foreach ($valid_filenames as $filename) {
       $path = Wordless::join_paths(Wordless::theme_views_path(), $filename);
       if (is_file($path)) {
         $template_path = $path;
-        $arr = explode('.', $path);
-        $format = array_pop($arr);
+        $format = array_pop(explode('.', $path));
         break;
       }
     }
@@ -69,12 +50,6 @@ class RenderHelper {
 
   }
 
-  /**
-  * This is awaiting for documentation
-  *
-  * @todo
-  *   Loss of doc
-  */
   function get_partial_content($name, $locals = array()) {
     ob_start();
     render_partial($name, $locals);
@@ -83,12 +58,6 @@ class RenderHelper {
     return $partial_content;
   }
 
-  /**
-  * This is awaiting for documentation
-  *
-  * @todo
-  *   Loss of doc
-  */
   function render_partial($name, $locals = array()) {
     $parts = preg_split("/\//", $name);
     if (!preg_match("/^_/", $parts[sizeof($parts)-1])) {
@@ -97,23 +66,11 @@ class RenderHelper {
     render_template(implode($parts, "/"), $locals);
   }
 
-  /**
-  * This is awaiting for documentation
-  *
-  * @todo
-  *   Loss of doc
-  */
   function yield() {
     global $current_view;
     render_template($current_view);
   }
 
-  /**
-  * This is awaiting for documentation
-  *
-  * @todo
-  *   Loss of doc
-  */
   function render_view($name, $layout = 'default', $locals = array()) {
     ob_start();
     global $current_view;

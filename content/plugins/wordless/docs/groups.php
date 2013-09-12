@@ -12,8 +12,9 @@
  *   All the helpers functions in Wordless.
  *   @ingroup helpers
  * 
- * @defgroup vendorclass Vendor Helpers Classes
- *   Vendors classes included inside Wordless
- *   @ingroup helpers
  */
 
+/**
+ * @defgroup placeholders Placeholders
+ *   All the define placeholders (image or text) define in Wordless.
+ */

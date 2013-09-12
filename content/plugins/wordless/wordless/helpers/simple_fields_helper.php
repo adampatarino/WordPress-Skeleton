@@ -1,21 +1,6 @@
 <?php
 
-/**
-* Awaiting for documentation
-*
-* @todo
-*   Loss of doc
-*
-* @ingroup helperclass
-*/
 class SimpleFieldsHelper {
-
-  /**
-  * Awaiting for documentation
-  *
-  * @todo
-  *   Loss of doc
-  */
   function simple_fields_metas($post) {
       $connector = simple_fields_get_all_fields_and_values_for_post($post->ID);
       $metas = array();
@@ -34,16 +19,10 @@ class SimpleFieldsHelper {
       return $metas;
     }
 
-  /**
-  * Awaiting for documentation
-  *
-  * @todo
-  *   Loss of doc
-  */
-  function simple_fields_meta($post, $group, $field) {
-    $metas = simple_fields_metas($post);
-    return $metas[$group][$field];
-  }
+    function simple_fields_meta($post, $group, $field) {
+      $metas = simple_fields_metas($post);
+      return $metas[$group][$field];
+    }
 }
 
 Wordless::register_helper("SimpleFieldsHelper");

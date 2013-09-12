@@ -23,7 +23,7 @@ class WordlessAdmin
         add_action('admin_notices', array('WordlessAdmin', 'add_notice'));
       }
       // If the user can edit theme options, let the fun begin!
-      add_action('admin_menu', array('WordlessAdmin', 'add_page'), 1);
+      add_action('admin_menu', array('WordlessAdmin', 'add_page'));
     }
   }
 
@@ -50,30 +50,20 @@ class WordlessAdmin
   }
 
   public static function add_page() {
-    // add Wordless menu 
-    add_menu_page(
-      'Wordless',
-      'Wordless',
+    $page = add_theme_page(
+      'Create a new Wordless theme',
+      'New Wordless theme',
       'edit_theme_options',
-      'wordless',
-      array('WordlessAdmin', 'page_content'),
-      plugins_url() . '/wordless/welaika.16x16.png',
-      59
+      'create_wordless_theme',
+      array('WordlessAdmin', 'page_content')
     );
-
-    // add Wordless perferences submenu
-    $page = add_submenu_page(
-      'wordless',
+    $page = add_theme_page(
       'Setting Wordless preferences',
-      'Preferences',
+      'Wordless preferences',
       'edit_theme_options',
       'wordless_preferences',
       array('WordlessAdmin', 'preferences_content')
     );
-
-    //Make the New Theme the first submenu item and the item to appear when clicking the parent.
-    global $submenu;
-    $submenu['wordless'][0][0] = 'New Theme';
   }
 
   public static function page_content() {
@@ -181,7 +171,7 @@ class WordlessAdmin
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
       foreach ($wordless_preferences as $name => $properties){
         $value = trim($_POST[$name]);
-        if ($name == "assets_preprocessors" || $name == 'css_require_libs') {
+        if (($name == "assets_preprocessors" || $name == 'css_require_libs') && (strlen($value) > 0)) {
           $value = array_map('trim', explode(',', $value));
         }
         update_option($name, $value);
@@ -215,4 +205,3 @@ class WordlessAdmin
     require 'admin/preferences_form.php';
   }
 }
-

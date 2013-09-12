@@ -66,7 +66,6 @@ class UrlHelper {
    * @ingroup helperfunc
    */
   function stylesheet_url($path) {
-    if (!preg_match("/\.css$/", $path)) $path .= ".css";
     return asset_url("stylesheets/$path");
   }
 
@@ -81,61 +80,8 @@ class UrlHelper {
    * @ingroup helperfunc
    */
   function javascript_url($path) {
-    if (!preg_match("/\.js$/", $path)) $path .= ".js";
     return asset_url("javascripts/$path");
   }
-
-  /**
-   * Check if an URL is absolute or not
-   * URL are considered absolute if they begin with a protocol specification
-   * (https|https in this case) or with the double slash (//) to take advantage
-   * of the protocol relative URL (http://paulirish.com/2010/the-protocol-relative-url/) 
-   * 
-   * @param string $url
-   *   The url to check.
-   * @return boolean
-   *   Either true if the URL is absolute or false if it is not.
-   * 
-   * @ingroup helperfunc
-   */
-
-  function is_absolute_url($url) {
-    return(preg_match("/^(https?:)?\/\//", $url) === 1);
-  }
-
-
-  /**
-   * Check if an URL is root relative
-   * URL are considered root relative if they are not absolute but begin with a /
-   * 
-   * @param string $url
-   *   The url to check.
-   * @return boolean
-   *   Either true if the URL is root relative or false if it is not.
-   * 
-   * @ingroup helperfunc
-   */
-
-  function is_root_relative_url($url) {
-    return(!is_absolute_url($url) && preg_match("/^\//", $url) === 1);
-  }
-
-  /**
-   * Check if an URL is relative
-   * URL are considered relative if they are not absolute and don't begin with a /
-   * 
-   * @param string $url
-   *   The url to check.
-   * @return boolean
-   *   Either true if the URL is relative or false if it is not.
-   * 
-   * @ingroup helperfunc
-   */
-
-  function is_relative_url($url) {
-    return(!(is_absolute_url($url) || is_root_relative_url($url)));
-  }
-
 }
 
 Wordless::register_helper("UrlHelper");

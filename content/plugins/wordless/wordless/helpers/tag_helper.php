@@ -1,10 +1,9 @@
 <?php
 /**
+ * TagHelper
+ *
  * Provides methods to generate HTML tags programmatically when you can't use a Builder.
- *
  * @package Wordless
- *
- * @ingroup helperclass
  */
 class TagHelper {
 
@@ -41,12 +40,6 @@ class TagHelper {
     return join(" ", $html_content);
   }
 
-  /**
-  * Awaiting for documentation
-  *
-  * @todo
-  *   Loss of doc
-  */
   function content_tag($name, $content, $options = NULL, $escape = false) {
 
     if (is_null($content)){
@@ -68,12 +61,6 @@ class TagHelper {
     return $html_content;
   }
 
-  /**
-  * Awaiting for documentation
-  *
-  * @todo
-  *   Loss of doc
-  */
   function option_tag($text, $name, $value, $selected = NULL) {
     $options = array(
       "name"  => $name,
@@ -87,12 +74,6 @@ class TagHelper {
     return $this->content_tag("option", $text, $options);
   }
 
-  /**
-  * Awaiting for documentation
-  *
-  * @todo
-  *   Loss of doc
-  */
   function link_to($text = '', $link = NULL, $attributes = NULL) {
     if (!is_string($link)) {
       $link = "#";
@@ -106,12 +87,7 @@ class TagHelper {
     return $this->content_tag("a", $text, $options);
   }
 
-  /**
-  * Awaiting for documentation
-  *
-  * @todo
-  *   Loss of doc
-  */
+
   function content_type_meta_tag($content = NULL) {
 
     $content = $content ? $content : get_bloginfo('html_type') . '; ' . 'charset=' . get_bloginfo('charset');
@@ -124,23 +100,11 @@ class TagHelper {
     return content_tag("meta", NULL, $attrs);
   }
 
-  /**
-  * Awaiting for documentation
-  *
-  * @todo
-  *   Loss of doc
-  */
   function title_tag($title = NULL, $attributes = array()) {
     $title = $title ? $title : get_page_title();
     return content_tag("title", $title, $attributes);
   }
 
-  /**
-  * Awaiting for documentation
-  *
-  * @todo
-  *   Loss of doc
-  */
   function pingback_link_tag($url = NULL) {
     $url = $url ? $url : get_bloginfo('pingback_url');
     $attributes = array("href" => $url);

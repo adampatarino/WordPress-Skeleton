@@ -1,6 +1,6 @@
 <?php
 /**
- * Provides methods for generating HTML that links views to assets
+ * This module provides methods for generating HTML that links views to assets
  * such as images, javascripts, stylesheets, and feeds. These methods do not
  * verify the assets exist before linking to them.
  *
@@ -218,7 +218,7 @@ class AssetTagHelper {
    *
    */
   public function image_tag($source, $attributes = NULL) {
-    if (!(is_absolute_url($source) || is_root_relative_url($source))) {
+    if (!preg_match("/^(https?|\/)/", $source)) {
       $source = image_url($source);
     }
     
@@ -301,7 +301,7 @@ class AssetTagHelper {
     }
 
     foreach ($sources as $source) {
-      if (!is_absolute_url($source)) {
+      if (!preg_match("/^https?:\/\//", $source)) {
         $source = stylesheet_url($source);
         if (!preg_match("/\.css$/", $source)) $source .= ".css";
         $source = $this->asset_version($source);
@@ -347,9 +347,7 @@ class AssetTagHelper {
     $tags = array();
 
     foreach ($sources as $source) {
-      // only http[s] or // (leading double slash to inherit the protocol)
-      // are treated as absolute url
-      if (!is_absolute_url($source)) {
+      if (!preg_match("/^https?:\/\//", $source)) {
         $source = javascript_url($source);
         if (!preg_match("/\.js$/", $source)) $source .= ".js";
         $source = $this->asset_version($source);

@@ -4,7 +4,7 @@ require_once Wordless::join_paths(dirname(dirname(dirname(__FILE__))), 'vendor/l
 Wordless::require_once_dir(Wordless::join_paths(dirname(__FILE__), "placeholder_images"));
 
 /**
- * Provides methods for use of placeholders (images or text).
+ * This module provides methods for use of placeholders (images or text).
  * 
  * @copyright welaika &copy; 2011 - MIT License
  * 

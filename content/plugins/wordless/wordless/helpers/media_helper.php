@@ -1,7 +1,7 @@
 <?php 
 
 /**
- * Implements media interaction; mostly images manipulation and 
+ * This module implement Media interaction
  * 
  * @ingroup helperclass
  */
@@ -9,18 +9,13 @@
 class MediaHelper {
   
   /**
-   * Includes a PHP class to detect mobile devices and user agent details.
+   * This function include a PHP class (Mobile Detect - Version 2.5.2 - commit b5b8992dbe) to detect mobile devices and user agent details.
+   * To use it simply call the function detect_user_agent() in your view and then call one avaible method.
    * 
-   * \code{.php}
-   *  $detect = detect_user_agent()  
-   *  $detect->isMobile()
-   * \endcode
-   *
-   *  @return object
+   * @example
+   *   $detect->isMobile()
    * 
    * @see https://github.com/serbanghita/Mobile-Detect
-   * \note
-   *    Using Mobile Detect - Version 2.5.2 - commit b5b8992dbe
    * 
    * @ingroup helperfunc
    */

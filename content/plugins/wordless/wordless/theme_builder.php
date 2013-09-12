@@ -6,7 +6,7 @@
 class WordlessThemeBuilder {
 
   function __construct($theme_name, $theme_dir, $chmod_set) {
-    $wp_base_theme = content_url().'/themes/';
+    $wp_base_theme = WP_CONTENT_DIR.'/themes';
     $this->theme_dir = Wordless::join_paths($wp_base_theme, $theme_dir);
     $this->theme_name = $theme_name;
     $this->chmod_set = $chmod_set;

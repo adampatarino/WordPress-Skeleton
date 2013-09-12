@@ -5,7 +5,9 @@ require_once 'placeholder_image.php';
 /**
  * Implements the Placehold service.
  * 
- * @ingroup helperclass
+ * @copyright welaika &copy; 2011 - MIT License
+ * 
+ * @ingroup placeholders
  * 
  * @see http://placehold.it
  */
