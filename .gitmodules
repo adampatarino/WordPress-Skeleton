@@ -1,9 +1,6 @@
 [submodule "wp"]
 	path = wp
 	url = git://github.com/WordPress/WordPress.git
-[submodule "content/plugins/wordless"]
-	path = content/plugins/wordless
-	url = https://github.com/adampatarino/wordless.git
 [submodule "content/plugins/acf"]
 	path = content/plugins/acf
 	url = https://github.com/elliotcondon/acf.git
