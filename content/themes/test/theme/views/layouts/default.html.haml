@@ -2,7 +2,7 @@
 %html(html_attrs())
   %head= render_partial("layouts/head")
   %body
-    .page-wrapper
+    #container
       %header.site-header= render_partial("layouts/header")
       %section.site-content= yield()
       %footer.site-footer= render_partial("layouts/footer")
